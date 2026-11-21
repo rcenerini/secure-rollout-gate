@@ -1,0 +1,36 @@
+# Segredos e ambiente local (nunca versionar)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+credentials*.json
+secrets.*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Saídas locais de scanners e do agente
+fixtures/raw/*.tmp
+*.sarif.tmp
+.opencode/cache/
+
+# Editor e sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
