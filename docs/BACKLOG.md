@@ -68,7 +68,7 @@ Nenhuma delas foi decidida. Cada uma traz uma proposta, que **não vale como dec
 
 **Feita (DoD):**
 - Aceite executado e a saída colada na descrição do PR.
-- Nenhum arquivo fora de `Escopo` alterado, exceto `docs/HANDOFF.md` e `docs/USAGE-LOG.md`, sempre permitidos (`scripts/check_scope.py` quando existir, S1.8).
+- Nenhum arquivo fora de `Escopo` alterado, exceto `docs/HANDOFF.md`, `docs/USAGE-LOG.md` e `docs/QUESTIONS.md`, sempre permitidos (`scripts/check_scope.py` quando existir, S1.8).
 - Testes de regressão e gates determinísticos verdes.
 - `docs/HANDOFF.md`, `docs/DECISOES.md` e `docs/refs/SOURCES.md` atualizados quando aplicável.
 - Linha em `docs/USAGE-LOG.md`: modelo, tier, tentativas, resultado.
@@ -220,7 +220,7 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 - **Escopo:**
   - `scripts/check_scope.py`
   - `tests/test_check_scope.py`
-- **Interface:** `python scripts/check_scope.py --story <ID>`. Lê o campo `Escopo` da história `<ID>` em `docs/BACKLOG.md` (um caminho exato por linha, entre crases). Os arquivos alterados vêm de `git diff --name-only main...HEAD`. Sempre permitidos, mesmo fora do `Escopo`: `docs/HANDOFF.md` e `docs/USAGE-LOG.md` (lista fixa no script). `docs/DECISOES.md` e `docs/refs/SOURCES.md` só se listados no `Escopo` da história. Código de saída 0 se todos os alterados estão no `Escopo` ou na lista fixa, 1 se algum está fora (listando-os), 2 se a história não existe ou não tem campo `Escopo`.
+- **Interface:** `python scripts/check_scope.py --story <ID>`. Lê o campo `Escopo` da história `<ID>` em `docs/BACKLOG.md` (um caminho exato por linha, entre crases). Os arquivos alterados vêm de `git diff --name-only main...HEAD`. Sempre permitidos, mesmo fora do `Escopo`: `docs/HANDOFF.md`, `docs/USAGE-LOG.md` e `docs/QUESTIONS.md` (lista fixa no script). `docs/DECISOES.md` e `docs/refs/SOURCES.md` só se listados no `Escopo` da história. Código de saída 0 se todos os alterados estão no `Escopo` ou na lista fixa, 1 se algum está fora (listando-os), 2 se a história não existe ou não tem campo `Escopo`.
 - **Aceite:** teste com um diff que altera arquivo fora do `Escopo` falha (código 1); com diff dentro do `Escopo` passa (código 0); história sem `Escopo` retorna código 2
 - **Parar se:** o campo `Escopo` da história for ambíguo ou o teste exigir dependência não listada em D-03
 
