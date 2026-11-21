@@ -21,4 +21,6 @@ Toda afirmação técnica de código, workflow ou configuração cita uma fonte 
 | opencode V2: agentes | https://opencode.ai/v2/docs/agents/ | `.opencode/agents/<nome>.md`; frontmatter: description, mode (primary/subagent/all), model (`provider/model#variante`), permissions, steps; corpo = prompt de sistema; campos V1 obsoletos |
 | opencode V2: permissões | https://opencode.ai/v2/docs/permissions/ | Regras `{action, resource, effect}` (allow/ask/deny); a última regra que corresponde vence; sem correspondência = ask; ações: read, edit, glob, grep, shell, subagent, skill, webfetch, websearch, external_directory e outras |
 
+| opencode Go (plano e ids) | https://opencode.ai/docs/zh-tw/go | Formato do id de modelo na configuração: `opencode-go/<model-id>`; limites do Go definidos em valor em dólar (5 horas, semanal, mensal); modelos DeepSeek V4 exigem região Global em Settings > Privacy |
+
 **Ainda sem fonte registrada:** OPA/Rego (versão e sintaxe), SARIF, CLI de cada scanner, API Checks do GitHub, formato de `.claude/agents`. Registrar na história que usar cada um.
