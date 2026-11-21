@@ -12,6 +12,9 @@ Gate de decisão GO / NO-GO / PENDENTE para liberar rollout: uma API de decisão
 4. `docs/QUESTIONS.md` e `docs/DECISOES.md` — o que já foi perguntado e decidido
 Leia só o que o campo `Ler` da história pedir além disso.
 
+## Precedência das regras
+Se houver regras globais do usuário (por exemplo em `~/.config/opencode/AGENTS.md`) em conflito com este arquivo, **vale este arquivo**. Não resolva o conflito sozinho: registre-o em `docs/QUESTIONS.md` e pergunte.
+
 ## Regra zero
 **Se houver dúvida, pare e pergunte.** Nunca decida e nunca infira. Escreva a pergunta em `docs/QUESTIONS.md` (contexto, opções, sua recomendação) e **espere a resposta do humano**. Histórias com decisão pendente em `Bloq` **não podem ser executadas**.
 
