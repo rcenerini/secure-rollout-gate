@@ -47,6 +47,7 @@ Registro de decisões e fatos. Só o dono do produto decide. Agentes **não** ac
 | Q-008 | `check_scope` sempre permite `docs/HANDOFF.md` e `docs/USAGE-LOG.md` (lista fixa no script); `docs/DECISOES.md` e `docs/refs/SOURCES.md` só se listados no `Escopo`. Decidido pelo usuário em 21/11/2026 (rodada 1b do teste S1.2). Em aberto: `docs/QUESTIONS.md` (onde o agente registra perguntas ao parar) não está na lista | Destrava a S1.8 |
 | S1.2 (PR #8) | O PR #8 (branch de evidência da rodada 1 do teste) foi mergeado na `main`, embora o protocolo previsse não mergear. Conteúdo só de docs; corrigido pelo PR da Q-007. Protocolo ajustado: ao dar push de branch de teste, não abrir PR | Registro |
 | D-14 | Campo `confianca` opcional no esquema | Libera S3.1 |
+| Q-007 (S1.8) | Convenção do `check_scope`: campo estruturado `Escopo:` em cada história (um path por linha, entre crases; `Saída` vira descrição humana); `check_scope` recebe `--story <ID>` e lê o BACKLOG.md; arquivos alterados via `git diff --name-only` contra `main` | Libera S1.8; exige adicionar `Escopo:` ao template e às histórias (amplia o `Saída` da S1.8) |
 
 ## Direções propostas (ainda não aprovadas formalmente)
 
