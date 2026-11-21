@@ -50,7 +50,7 @@ Ao responder, o PM copia a decisão para `docs/DECISOES.md`.
 
 ### Q-008 · Arquivos de processo e o `check_scope`
 - Pergunta: o `check_scope` deve permitir sempre os arquivos de processo que o AGENTS.md manda atualizar em toda história?
-- Opções: A) lista fixa (`HANDOFF.md`, `USAGE-LOG.md`); B) nada isento; C) commit separado.
+- Opções: A) lista fixa (`HANDOFF.md`, `USAGE-LOG.md`, `QUESTIONS.md`); B) nada isento; C) commit separado.
 - Status: RESPONDIDA em 21/11/2026 (A; ver DECISOES.md)
 
 ### Demais pendências
