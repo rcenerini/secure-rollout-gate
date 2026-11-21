@@ -44,6 +44,7 @@ Registro de decisões e fatos. Só o dono do produto decide. Agentes **não** ac
 | D-12 | Revisão de PR por IA com LLM open source na VPS | S2.10 e S7.4 movidas para o E9 |
 | D-13 | NO-GO prevalece sobre PENDENTE | Libera S3.5 a S3.7; ordem da regra muda |
 | D-14 | Campo `confianca` opcional no esquema | Libera S3.1 |
+| Q-007 (S1.8) | Convenção do `check_scope`: campo estruturado `Escopo:` em cada história (um path por linha, entre crases; `Saída` vira descrição humana); `check_scope` recebe `--story <ID>` e lê o BACKLOG.md; arquivos alterados via `git diff --name-only` contra `main` | Libera S1.8; exige adicionar `Escopo:` ao template e às histórias (amplia o `Saída` da S1.8) |
 
 ## Direções propostas (ainda não aprovadas formalmente)
 

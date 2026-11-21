@@ -52,7 +52,8 @@ Ao responder, o PM copia a decisão para `docs/DECISOES.md`.
   - C) `check_scope` não parseia BACKLOG.md: recebe o allowlist como argumento/arquivo sidecar (`--allow <path...>`). Determinístico, mas deixa de "comparar com a Saída da história" literalmente.
   - D) Adiar S1.8 para depois de S2.1 (esqueleto/pytest) e decidir a convenção junto do esqueleto do projeto.
 - Recomendação: A + definir também (i) que `check_scope` recebe `--story <ID>` e lê BACKLOG.md, e (ii) que os arquivos alterados vêm de `git diff --name-only` contra a branch base (a confirmar qual base: `main`). A opção A é a única totalmente determinística e alinhada ao DoD ("nenhum arquivo fora de Saída alterado"). Se o custo de reescrever as histórias agora for alto, B é a alternativa de menor atrito, aceitando heurística documentada.
-- Status: ABERTA
+- Status: RESPONDIDA em 21/11/2026
+- Resposta do dono do produto: opção A (campo estruturado `Escopo:` em cada história, um path exato por linha entre crases, mantendo `Saída` como descrição humana); `check_scope` recebe `--story <ID>` e lê o BACKLOG.md; arquivos alterados de `git diff --name-only` contra `main`.
 
 ### Demais pendências
 Abertas: D-04, D-06, D-07. Adiada: D-08. Demais: ver `docs/BACKLOG.md`, seção 3. Serão abertas aqui quando a história que depende delas for a próxima.
