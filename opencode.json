@@ -1,3 +1,44 @@
 {
-  "$schema": "https://opencode.ai/config.json"
+  "$schema": "https://opencode.ai/config.json",
+  "agents": {
+    "cloud-auditor": {
+      "disabled": true
+    },
+    "cybersec-architect": {
+      "disabled": true
+    },
+    "doc-security-architect": {
+      "disabled": true
+    },
+    "docs": {
+      "disabled": true
+    },
+    "git": {
+      "disabled": true
+    },
+    "identity-architect": {
+      "disabled": true
+    },
+    "infosec-architect": {
+      "disabled": true
+    },
+    "po-pm": {
+      "disabled": true
+    },
+    "qa-engineer": {
+      "disabled": true
+    },
+    "readme-designer": {
+      "disabled": true
+    },
+    "sdd-architect": {
+      "disabled": true
+    },
+    "squad-orchestrator": {
+      "disabled": true
+    },
+    "threat-model": {
+      "disabled": true
+    }
+  }
 }
