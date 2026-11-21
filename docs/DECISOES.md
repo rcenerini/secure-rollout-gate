@@ -43,6 +43,7 @@ Registro de decisões e fatos. Só o dono do produto decide. Agentes **não** ac
 | D-11 | Alvos: app próprio com falhas plantadas e app público para DAST | Libera S5.1 |
 | D-12 | Revisão de PR por IA com LLM open source na VPS | S2.10 e S7.4 movidas para o E9 |
 | D-13 | NO-GO prevalece sobre PENDENTE | Libera S3.5 a S3.7; ordem da regra muda |
+| Q-007 | Convenção do escopo: campo `Escopo` estruturado por história (um caminho por linha). `check_scope.py --story <ID>` lê o BACKLOG; arquivos alterados vêm de `git diff --name-only main...HEAD`. Decidido pelo usuário em 21/11/2026 durante a rodada 1 do teste S1.2. Código de saída 2 para história sem `Escopo` foi proposto pelo PM (fail-closed) e está sujeito a revisão | Destrava S1.8; cria S1.11 |
 | D-14 | Campo `confianca` opcional no esquema | Libera S3.1 |
 
 ## Direções propostas (ainda não aprovadas formalmente)

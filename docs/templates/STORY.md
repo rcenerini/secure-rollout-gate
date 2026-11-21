@@ -3,6 +3,7 @@
 - **Objetivo (1 frase):**
 - **Ler:** <arquivos e URLs oficiais; nada além disso>
 - **Saída:** <arquivos exatos a criar ou alterar (máx. 3 de código)>
+- **Escopo:** <um caminho exato por linha, entre crases, sem prosa, sem "(ou equivalente)", sem contagens; é a lista que `scripts/check_scope.py` lê>
 - **Aceite:** <comando executável ou checagem objetiva; resultado esperado>
 - **Fora do escopo:**
 - **Parar e perguntar se:** <condições específicas>

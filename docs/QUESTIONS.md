@@ -43,5 +43,10 @@ Ao responder, o PM copia a decisão para `docs/DECISOES.md`.
 - Com achado de IA não validado e alto/crítico determinístico ao mesmo tempo, o fluxograma da Rev 4 dá PENDENTE. NO-GO deveria prevalecer?
 - Status: RESPONDIDA em 21/11/2026 (NO-GO prevalece)
 
+### Q-007 · Convenção do campo `Saída`/escopo para o `check_scope` (S1.8)
+- Pergunta: como o `check_scope.py` obtém a lista de arquivos permitidos de uma história?
+- Opções: A) campo `Escopo` estruturado; B) extrair caminhos da `Saída`; C) `--allow`; D) adiar a S1.8.
+- Status: RESPONDIDA em 21/11/2026 (A, com base do diff `main`; ver DECISOES.md)
+
 ### Demais pendências
 Abertas: D-04, D-06, D-07. Adiada: D-08. Demais: ver `docs/BACKLOG.md`, seção 3. Serão abertas aqui quando a história que depende delas for a próxima.

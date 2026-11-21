@@ -68,7 +68,7 @@ Nenhuma delas foi decidida. Cada uma traz uma proposta, que **não vale como dec
 
 **Feita (DoD):**
 - Aceite executado e a saída colada na descrição do PR.
-- Nenhum arquivo fora de `Saída` alterado (`scripts/check_scope.py` quando existir, S1.8).
+- Nenhum arquivo fora de `Escopo` alterado (`scripts/check_scope.py` quando existir, S1.8).
 - Testes de regressão e gates determinísticos verdes.
 - `docs/HANDOFF.md`, `docs/DECISOES.md` e `docs/refs/SOURCES.md` atualizados quando aplicável.
 - Linha em `docs/USAGE-LOG.md`: modelo, tier, tentativas, resultado.
@@ -215,10 +215,14 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 - **Aceite:** o arquivo existe e a primeira linha é de S0.2
 
 #### S1.8 · Verificação de escopo do diff
-- **Tier:** T2 · **Dep:** S1.7 · **Bloq:** D-03
-- **Saída:** `scripts/check_scope.py` (ou equivalente) que compara os arquivos alterados com a `Saída` da história
-- **Aceite:** teste com um diff que altera arquivo fora do escopo falha; com diff dentro do escopo passa
-- **Parar se:** o formato do campo `Saída` for ambíguo
+- **Tier:** T2 · **Dep:** S1.7 · **Bloq:** D-03 (Q-007 respondida: opção A)
+- **Saída:** `scripts/check_scope.py` e seu teste. A `Saída` continua sendo a descrição humana; o script lê o campo `Escopo`.
+- **Escopo:**
+  - `scripts/check_scope.py`
+  - `tests/test_check_scope.py`
+- **Interface:** `python scripts/check_scope.py --story <ID>`. Lê o campo `Escopo` da história `<ID>` em `docs/BACKLOG.md` (um caminho exato por linha, entre crases). Os arquivos alterados vêm de `git diff --name-only main...HEAD`. Código de saída 0 se todos os alterados estão no `Escopo`, 1 se algum está fora (listando-os), 2 se a história não existe ou não tem campo `Escopo`.
+- **Aceite:** teste com um diff que altera arquivo fora do `Escopo` falha (código 1); com diff dentro do `Escopo` passa (código 0); história sem `Escopo` retorna código 2
+- **Parar se:** o campo `Escopo` da história for ambíguo ou o teste exigir dependência não listada em D-03
 
 #### S1.9 · Registro de fontes oficiais
 - **Tier:** T3 · **Dep:** S0.2
@@ -231,6 +235,15 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 - **Saída:** procedimento em `docs/refs/ADMISSAO-SKILLS.md`: nenhuma skill ou MCP entra no projeto sem scan, commit fixado e revisão humana
 - **Aceite:** uma skill de teste passa pelo procedimento e o resultado é registrado
 - **Parar se:** o comando da ferramenta não estiver na doc oficial
+
+
+#### S1.11 · Preencher o campo Escopo nas histórias
+- **Tier:** T3 · **Dep:** S1.8 · **Bloq:** nenhuma
+- **Saída:** `docs/BACKLOG.md` com o campo `Escopo` em cada história que tem `Saída` com arquivos
+- **Escopo:**
+  - `docs/BACKLOG.md`
+- **Aceite:** `python scripts/check_scope.py --story <ID>` não retorna código 2 para nenhuma história com arquivos de saída; `Escopo` de cada história só lista caminhos que aparecem na `Saída` dela
+- **Parar se:** a `Saída` de uma história for ambígua sobre quais arquivos criar
 
 ### E2 · Qualidade e segurança do próprio código (CI)
 
