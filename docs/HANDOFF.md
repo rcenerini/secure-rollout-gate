@@ -7,10 +7,10 @@ Atualize ao fim de cada sessão e sempre que trocar de ferramenta (opencode ↔ 
 - **Ferramenta e modelo da última sessão:** nenhuma (planejamento feito no chat)
 - **História em andamento:** nenhuma
 - **Branch:** —
-- **Última história concluída:** S0.2 (push do pacote inicial em 21/11/2026; gitleaks 8.30.1 sem achados)
+- **Última história concluída:** S0.2 (pacote sanitizado enviado ao repositório recriado, público; gitleaks 8.30.1 sem achados; 21/11/2026)
 
 ## Próximo passo (exato)
-Executar **S0.2** (gitleaks não instalado no Windows do usuário; clone fora do OneDrive) (subir este pacote em https://github.com/rcenerini/secure-rollout-gate, após gitleaks sem achados). S0.1 concluída em 21/11/2026.
+Executar **S0.6** (recursos de segurança do GitHub); S0.2 e S0.4 concluídas. (histórico: S0.2 (gitleaks não instalado no Windows do usuário; clone fora do OneDrive) (subir este pacote em https://github.com/rcenerini/secure-rollout-gate, após gitleaks sem achados). S0.1 concluída em 21/11/2026.
 
 ## O que está feito e verificado
 - Pacote inicial montado (README, AGENTS.md, CLAUDE.md, docs/). Nada executado ainda.
