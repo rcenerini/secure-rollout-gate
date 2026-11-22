@@ -24,7 +24,7 @@ Se houver regras globais do usuário (por exemplo em `~/.config/opencode/AGENTS.
 3. Faça o plano (arquivos que vai tocar, testes, riscos) e **mostre antes de codar** quando a história for T1 ou T2.
 4. Teste primeiro nas histórias de política e de normalização.
 5. Mexa **somente** nos arquivos listados em `Saída`.
-6. Rode o `Aceite` e **cole a saída real** na descrição do PR. Sem saída colada, a história não está feita.
+6. Rode o `Aceite` e **cole a saída real** em `docs/HANDOFF.md`. Quem abre o PR é o humano, que cola essa saída na descrição. Sem saída colada, a história não está feita.
 7. Atualize `docs/HANDOFF.md`, `docs/USAGE-LOG.md` (criado na história S1.7) e, se aplicável, `docs/DECISOES.md` e `docs/refs/SOURCES.md`.
 8. Commits pequenos e em português, no formato `S<ID>: <o que mudou>`.
 
@@ -39,6 +39,7 @@ Se houver regras globais do usuário (por exemplo em `~/.config/opencode/AGENTS.
 - Não altere um golden file para fazer um teste passar. Mudança de saída esperada exige aprovação humana.
 
 ## Segurança
+- **Agentes não fazem `git push`, não abrem PR e não usam `gh`.** Entregam a branch local e a saída do aceite no `docs/HANDOFF.md`; o push e o PR são do humano.
 - Nunca coloque segredo, chave, token, dado real ou código corporativo no repositório, em prompt ou em teste. Segredos de teste são **falsos e identificados como falsos**.
 - Não adicione dependência sem uma história ou ADR. Fixe versões; GitHub Actions fixadas por SHA.
 - Workflows: `permissions` mínimas; nunca `pull_request_target` com checkout de código do PR; não passar segredos a PR de fork.

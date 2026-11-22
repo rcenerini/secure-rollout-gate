@@ -42,6 +42,12 @@ permissions:
   - action: shell
     resource: "*"
     effect: ask
+  - action: shell
+    resource: "git push *"
+    effect: deny
+  - action: shell
+    resource: "gh *"
+    effect: deny
 ---
 
 Você implementa. Siga o AGENTS.md.

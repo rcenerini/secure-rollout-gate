@@ -1,5 +1,17 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "permissions": [
+    {
+      "action": "shell",
+      "resource": "git push *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "gh *",
+      "effect": "deny"
+    }
+  ],
   "agents": {
     "cloud-auditor": {
       "disabled": true
