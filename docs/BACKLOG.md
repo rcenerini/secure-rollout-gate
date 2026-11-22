@@ -67,10 +67,10 @@ Nenhuma delas foi decidida. Cada uma traz uma proposta, que **não vale como dec
 **Pronta (DoR):** tem todos os campos do template; nenhuma decisão pendente listada em `Bloqueada por`; `Ler` e `Saída` apontam arquivos existentes ou a criar; o aceite é um comando ou uma checagem objetiva.
 
 **Feita (DoD):**
-- Aceite executado e a saída colada na descrição do PR.
+- Aceite executado e a saída colada em `docs/HANDOFF.md`; o humano a leva para a descrição do PR (agentes não abrem PR).
 - Nenhum arquivo fora de `Escopo` alterado, exceto `docs/HANDOFF.md`, `docs/USAGE-LOG.md` e `docs/QUESTIONS.md`, sempre permitidos (`scripts/check_scope.py` quando existir, S1.8).
 - Testes de regressão e gates determinísticos verdes.
-- `docs/HANDOFF.md`, `docs/DECISOES.md` e `docs/refs/SOURCES.md` atualizados quando aplicável.
+- `docs/HANDOFF.md` atualizado. `docs/DECISOES.md` e `docs/refs/SOURCES.md` só se listados no `Escopo` da história; decisões só o usuário registra.
 - Linha em `docs/USAGE-LOG.md`: modelo, tier, tentativas, resultado.
 
 **Template de história:** `docs/templates/STORY.md`.
