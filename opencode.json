@@ -12,7 +12,12 @@
       "effect": "deny"
     },
     { "action": "webfetch", "resource": "*", "effect": "deny" },
-    { "action": "websearch", "resource": "*", "effect": "deny" }
+    { "action": "websearch", "resource": "*", "effect": "deny" },
+    { "action": "shell", "resource": "curl *", "effect": "deny" },
+    { "action": "shell", "resource": "wget *", "effect": "deny" },
+    { "action": "shell", "resource": "Invoke-WebRequest *", "effect": "deny" },
+    { "action": "shell", "resource": "iwr *", "effect": "deny" },
+    { "action": "shell", "resource": "irm *", "effect": "deny" }
   ],
   "agents": {
     "cloud-auditor": {
