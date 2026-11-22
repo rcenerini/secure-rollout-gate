@@ -1,3 +1,4 @@
+import io
 import sys
 import unittest
 from pathlib import Path
@@ -114,8 +115,10 @@ class TestIntegration(unittest.TestCase):
     def test_code_1_outside_scope(self, mock_read, mock_diff):
         mock_read.return_value = self.BACKLOG
         mock_diff.return_value = ["README.md"]
-        code = check_scope.main(["--story", "S1.8"])
+        with patch("sys.stdout", new_callable=io.StringIO) as mock_stdout:
+            code = check_scope.main(["--story", "S1.8"])
         self.assertEqual(code, 1)
+        self.assertIn("README.md", mock_stdout.getvalue())
 
     @patch("check_scope.run_git_diff")
     @patch("check_scope.read_backlog")
@@ -123,6 +126,14 @@ class TestIntegration(unittest.TestCase):
         mock_read.return_value = self.BACKLOG
         mock_diff.return_value = ["opencode.json"]
         code = check_scope.main(["--story", "S1.3"])
+        self.assertEqual(code, 2)
+
+    @patch("check_scope.run_git_diff")
+    @patch("check_scope.read_backlog")
+    def test_code_2_story_not_found(self, mock_read, mock_diff):
+        mock_read.return_value = self.BACKLOG
+        mock_diff.return_value = []
+        code = check_scope.main(["--story", "S9.9"])
         self.assertEqual(code, 2)
 
 
