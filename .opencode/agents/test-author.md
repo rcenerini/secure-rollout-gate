@@ -1,6 +1,7 @@
 ---
 description: Escreve testes e fixtures antes da implementação, a partir do aceite da história.
 mode: subagent
+model: opencode-go/deepseek-v4-pro
 steps: 15
 permissions:
   - action: "*"

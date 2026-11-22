@@ -1,6 +1,7 @@
 ---
 description: Revisa segurança do diff (segredos, dependências, workflows, injeção, supply chain). Somente leitura; roda ferramentas determinísticas.
 mode: subagent
+model: opencode-go/qwen4-max
 steps: 20
 permissions:
   - action: "*"

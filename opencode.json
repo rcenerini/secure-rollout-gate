@@ -10,7 +10,9 @@
       "action": "shell",
       "resource": "gh *",
       "effect": "deny"
-    }
+    },
+    { "action": "webfetch", "resource": "*", "effect": "deny" },
+    { "action": "websearch", "resource": "*", "effect": "deny" }
   ],
   "agents": {
     "cloud-auditor": {

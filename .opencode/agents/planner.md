@@ -1,6 +1,7 @@
 ---
 description: Lê uma história do BACKLOG e produz o plano (arquivos, testes, riscos). Não escreve código.
 mode: subagent
+model: opencode-go/qwen4-max
 steps: 15
 permissions:
   - action: "*"
