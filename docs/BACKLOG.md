@@ -129,7 +129,7 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 - **Tier:** T0 · **Dep:** S0.1
 - **Ler:** conteúdo do `repo-inicial.zip`
 - **Saída:** primeiro commit em `main` com README, AGENTS.md, CLAUDE.md e `docs/`
-- **Aceite:** `git log --oneline` mostra o commit; os arquivos aparecem no GitHub; **antes do push**, `gitleaks detect` (ou equivalente) sem achados
+- **Aceite:** `git log --oneline` mostra o commit; os arquivos aparecem no GitHub; **antes do push**, `gitleaks dir .` (ou equivalente; `detect` está depreciado) sem achados
 - **Parar se:** o repositório for público e S0.3 ainda não estiver feita
 
 #### S0.3 · Sanitizar os documentos de referência
@@ -412,7 +412,7 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 
 #### S6.1 · Job de decisão no Actions
 - **Tier:** T2 · **Dep:** S3.9, S4.5 · **Bloq:** D-05
-- **Saída:** workflow que baixa os achados normalizados, roda `opa eval` com a política e publica o resultado como check do PR
+- **Saída:** workflow que baixa os achados normalizados, roda `opa eval` com a política; o resultado é o status do próprio job, que vira o check do PR (o nome do job entra como check obrigatório no ruleset, S6.2); `permissions` mínimas
 - **Aceite:** em PR de teste, o job termina com sucesso para GO e falha para NO-GO e PENDENTE
 - **Parar se:** a forma de publicar o check exigir permissão não documentada
 

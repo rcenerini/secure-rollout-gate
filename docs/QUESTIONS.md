@@ -53,5 +53,29 @@ Ao responder, o PM copia a decisão para `docs/DECISOES.md`.
 - Opções: A) lista fixa (`HANDOFF.md`, `USAGE-LOG.md`, `QUESTIONS.md`); B) nada isento; C) commit separado.
 - Status: RESPONDIDA em 21/11/2026 (A; ver DECISOES.md)
 
+### Q-009 · S6.1: como publicar o check do PR
+- Pergunta: com job de Actions (D-05), como o gate publica o resultado no PR?
+- Opções: A) o próprio job é o check (nome do job como check obrigatório no ruleset); B) check run extra via API com `checks: write`; C) adiar para o GitHub App (S8.6, S8.7).
+- Status: RESPONDIDA em 22/11/2026 (A; ver DECISOES.md)
+
+### Q-010 · gitleaks: comando depreciado
+- Pergunta: qual comando do gitleaks o projeto usa? `detect` e `protect` estão depreciados desde a v8.19.0.
+- Opções: A) `gitleaks dir .` e `gitleaks git .`; B) manter `detect`.
+- Status: RESPONDIDA em 22/11/2026 (A; ver DECISOES.md)
+
+### Q-011 · Actions fixadas por SHA e Dependabot
+- Pergunta: como conciliar SHA fixo com o Dependabot, que não alerta ações fixadas por SHA?
+- Opções: A) SHA com comentário de versão, risco coberto por zizmor e Dependency Review; B) usar tags.
+- Status: RESPONDIDA em 22/11/2026 (A; ver DECISOES.md)
+
+### Q-012 · CodeQL na S2.5
+- Pergunta: o CodeQL está disponível na visibilidade e no plano atuais?
+- Status: RESPONDIDA em 22/11/2026 (gratuito em repositório público; ver DECISOES.md)
+
+### Q-013 · Prefixo de branch
+- Pergunta: `story/<ID>` ou `teste/<historia>-<modelo>`?
+- Opções: A) `story/` para entrega e `teste/` para evidência de teste; B) `story/` sempre.
+- Status: RESPONDIDA em 22/11/2026 (A; ver DECISOES.md)
+
 ### Demais pendências
 Abertas: D-04, D-06, D-07. Adiada: D-08. Demais: ver `docs/BACKLOG.md`, seção 3. Serão abertas aqui quando a história que depende delas for a próxima.
