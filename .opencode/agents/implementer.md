@@ -1,6 +1,7 @@
 ---
 description: Implementa somente o plano aprovado de uma história, executa o aceite e cola a saída.
 mode: subagent
+model: opencode-go/kimi-k2.7-code
 steps: 25
 permissions:
   - action: "*"

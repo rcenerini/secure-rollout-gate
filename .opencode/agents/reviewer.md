@@ -1,6 +1,7 @@
 ---
 description: Revisa o diff contra o aceite e o AGENTS.md. Somente leitura; usar modelo diferente do implementador.
 mode: subagent
+model: opencode-go/qwen4-max
 steps: 15
 permissions:
   - action: "*"

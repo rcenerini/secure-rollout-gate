@@ -1,6 +1,7 @@
 ---
 description: Atualiza HANDOFF, USAGE-LOG, SOURCES e QUESTIONS depois de uma história. Não altera código.
 mode: subagent
+model: opencode-go/qwen3.8-flash
 steps: 10
 permissions:
   - action: "*"
@@ -26,6 +27,12 @@ permissions:
     effect: allow
   - action: edit
     resource: "docs/refs/SOURCES.md"
+    effect: allow
+  - action: webfetch
+    resource: "*"
+    effect: allow
+  - action: websearch
+    resource: "*"
     effect: allow
 ---
 
