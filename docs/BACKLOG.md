@@ -220,9 +220,9 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 - **Escopo:**
   - `scripts/check_scope.py`
   - `tests/test_check_scope.py`
-- **Interface:** `python scripts/check_scope.py --story <ID>`. Lê o campo `Escopo` da história `<ID>` em `docs/BACKLOG.md` (um caminho exato por linha, entre crases). Os arquivos alterados vêm de `git diff --name-only main...HEAD`. Sempre permitidos, mesmo fora do `Escopo`: `docs/HANDOFF.md`, `docs/USAGE-LOG.md` e `docs/QUESTIONS.md` (lista fixa no script). `docs/DECISOES.md` e `docs/refs/SOURCES.md` só se listados no `Escopo` da história. Código de saída 0 se todos os alterados estão no `Escopo` ou na lista fixa, 1 se algum está fora (listando-os), 2 se a história não existe ou não tem campo `Escopo`.
-- **Aceite:** teste com um diff que altera arquivo fora do `Escopo` falha (código 1); com diff dentro do `Escopo` passa (código 0); história sem `Escopo` retorna código 2
-- **Parar se:** o campo `Escopo` da história for ambíguo ou o teste exigir dependência não listada em D-03
+- **Interface:** `python scripts/check_scope.py --story <ID>`. Lê o campo `Escopo` da história `<ID>` em `docs/BACKLOG.md` (um caminho exato por linha, entre crases). Os arquivos alterados vêm de `git diff --name-only main...HEAD`. Sempre permitidos, mesmo fora do `Escopo`: `docs/HANDOFF.md`, `docs/USAGE-LOG.md` e `docs/QUESTIONS.md` (lista fixa no script). `docs/DECISOES.md` e `docs/refs/SOURCES.md` só se listados no `Escopo` da história. Código de saída 0 se todos os alterados estão no `Escopo` ou na lista fixa, 1 se algum está fora (listando-os), 2 se não foi possível avaliar: a história não existe, não tem campo `Escopo`, ou o `git diff` falha (ref inexistente, fora de repositório, clone raso). Nesses casos imprime o motivo e nunca devolve 0.
+- **Aceite:** teste com um diff que altera arquivo fora do `Escopo` falha (código 1); com diff dentro do `Escopo` passa (código 0); história sem `Escopo` retorna código 2; quando o `git diff` falha (por exemplo, `main` inexistente) retorna código 2 e nunca 0. O teste da falha do git usa um repositório git temporário real, não a substituição da função que lista os arquivos
+- **Parar se:** o campo `Escopo` da história for ambíguo, o teste exigir dependência não listada em D-03 ou o `git` não puder ser executado no ambiente de teste
 
 #### S1.9 · Registro de fontes oficiais
 - **Tier:** T3 · **Dep:** S0.2

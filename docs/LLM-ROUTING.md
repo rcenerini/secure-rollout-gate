@@ -39,7 +39,7 @@
 - **T2:** os três passaram o aceite da S1.8 em 1 tentativa. O `kimi-k2.7-code` previu no plano a falha do git (fail-closed); o `deepseek-v4-pro` deixou fail-open; o `glm-5.3` ficou sem veredito (rodada contaminada). Ressalva: o kimi fez push e abriu PR antes do bloqueio; agora negado por `opencode.json`, `implementer.md` e `AGENTS.md`.
 - **T3:** os três não inventaram fonte. `qwen3.8-flash` e `claude-haiku-5-5` ficaram sem web (cobertura 60 e 36 afirmações). `deepseek-v4.1-flash` só se a tarefa exigir web (usou web liberada por padrão; 84 afirmações, 11 URLs novas, 73 requests).
 - **T1:** os dois acharam o fail-open sem dica. `qwen4-max` foi o mais completo (prova por execução, 27 requests, mensal +2 pontos); `kimi-k3.1-pro` custou +5 pontos do mensal em 11 requests.
-- **Pendências desta tabela:** os arquivos `.opencode/agents/*.md` ainda não têm `model:`; o `deny` de web no `opencode.json`; revisor ≠ implementador continua valendo (T1 revisa T2 de outra família).
+- **Aplicado em 22/11/2026 (S1.4):** `model:` nos seis agentes (confirmado em execução pelo rodapé da sessão filha) e `deny` de web e de comandos de rede em `opencode.json`. Revisor ≠ implementador continua valendo (T1 revisa T2 de outra família).
 
 ### Inventário (S1.1, preenchido em 21/11/2026 com dados informados pelo usuário)
 - **opencode:** v2.1.4 (documentação V2)
