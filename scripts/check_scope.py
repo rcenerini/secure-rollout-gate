@@ -28,13 +28,17 @@ def read_backlog(path: Path) -> str:
 
 def run_git_diff() -> list[str]:
     root = Path(__file__).resolve().parents[1]
-    result = subprocess.run(
-        ["git", "diff", "--name-only", "main...HEAD"],
-        capture_output=True,
-        text=True,
-        shell=False,
-        cwd=root,
-    )
+    try:
+        result = subprocess.run(
+            ["git", "diff", "--name-only", "main...HEAD"],
+            capture_output=True,
+            text=True,
+            shell=False,
+            cwd=root,
+        )
+    except OSError as exc:
+        print(f"Erro ao executar git diff: {exc}", file=sys.stderr)
+        raise SystemExit(1)
     if result.returncode != 0:
         print(f"Erro ao executar git diff: {result.stderr.strip()}", file=sys.stderr)
         raise SystemExit(1)
@@ -94,6 +98,9 @@ def evaluate(scope: set[str], changed: list[str], fixed: set[str]) -> list[str]:
     return [path for path in changed if path not in allowed]
 
 
+STORY_ID_RE = re.compile(r"^S\d+\.\d+$")
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         description="Verifica se o diff está dentro do escopo da história."
@@ -102,13 +109,13 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     story_id = args.story.strip()
-    if not story_id:
-        print("Erro: --story não pode ser vazio.", file=sys.stderr)
+    if not STORY_ID_RE.match(story_id):
+        print("Erro: --story deve estar no formato S<numero>.<numero>.", file=sys.stderr)
         return 2
 
     try:
         content = read_backlog(BACKLOG_PATH)
-    except OSError as exc:
+    except (OSError, UnicodeDecodeError) as exc:
         print(f"Erro ao ler backlog: {exc}", file=sys.stderr)
         return 2
 
