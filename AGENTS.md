@@ -19,7 +19,7 @@ Se houver regras globais do usuário (por exemplo em `~/.config/opencode/AGENTS.
 **Se houver dúvida, pare e pergunte.** Nunca decida e nunca infira. Escreva a pergunta em `docs/QUESTIONS.md` (contexto, opções, sua recomendação) e **espere a resposta do humano**. Histórias com decisão pendente em `Bloq` **não podem ser executadas**.
 
 ## Como trabalhar
-1. Execute **uma história por vez**, em uma branch `story/<ID>`.
+1. Execute **uma história por vez**, em uma branch `story/<ID>`. Rodadas de teste de modelo e outras evidências usam `teste/<historia>-<modelo>` e nunca são mescladas.
 2. Confirme o Definition of Ready. Se faltar algo, pergunte.
 3. Faça o plano (arquivos que vai tocar, testes, riscos) e **mostre antes de codar** quando a história for T1 ou T2.
 4. Teste primeiro nas histórias de política e de normalização.
@@ -41,7 +41,7 @@ Se houver regras globais do usuário (por exemplo em `~/.config/opencode/AGENTS.
 ## Segurança
 - **Agentes não fazem `git push`, não abrem PR e não usam `gh`.** Entregam a branch local e a saída do aceite no `docs/HANDOFF.md`; o push e o PR são do humano.
 - Nunca coloque segredo, chave, token, dado real ou código corporativo no repositório, em prompt ou em teste. Segredos de teste são **falsos e identificados como falsos**.
-- Não adicione dependência sem uma história ou ADR. Fixe versões; GitHub Actions fixadas por SHA.
+- Não adicione dependência sem uma história ou ADR. Fixe versões; GitHub Actions fixadas por SHA, com a versão em comentário na mesma linha (`uses: owner/repo@<sha> # vX.Y.Z`). O Dependabot não alerta ações fixadas por SHA; o risco é coberto por zizmor e Dependency Review.
 - Workflows: `permissions` mínimas; nunca `pull_request_target` com checkout de código do PR; não passar segredos a PR de fork.
 - Não instale skills, plugins ou MCPs de terceiros sem o procedimento de `docs/refs/ADMISSAO-SKILLS.md` (quando existir).
 - Não rode ferramenta ofensiva (por exemplo Strix) fora do alvo de teste autorizado.
