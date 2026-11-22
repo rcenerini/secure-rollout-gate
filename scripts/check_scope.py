@@ -56,21 +56,41 @@ def parse_escopo(backlog_text: str, story_id: str) -> list[str]:
     return paths
 
 
+def _first_non_empty_line(text: str) -> str:
+    """Retorna a primeira linha nao vazia de um texto."""
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped:
+            return stripped
+    return ""
+
+
 def get_changed_files() -> list[str]:
     """Retorna os arquivos alterados entre main e HEAD."""
     try:
         result = subprocess.run(
-            ["git", "diff", "--name-only", "main...HEAD"],
+            [
+                "git",
+                "-c",
+                "core.quotepath=false",
+                "diff",
+                "--no-renames",
+                "--name-only",
+                "main...HEAD",
+            ],
             capture_output=True,
             text=True,
             encoding="utf-8",
+            timeout=30,
             check=False,
         )
     except FileNotFoundError as exc:
         raise ScopeError("git nao encontrado") from exc
+    except subprocess.TimeoutExpired as exc:
+        raise ScopeError("git diff excedeu o tempo limite") from exc
 
     if result.returncode != 0:
-        raise ScopeError(result.stderr.strip() or "git diff falhou")
+        raise ScopeError(_first_non_empty_line(result.stderr) or "git diff falhou")
 
     return [line.strip() for line in result.stdout.splitlines() if line.strip()]
 

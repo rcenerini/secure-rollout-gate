@@ -44,6 +44,13 @@ BACKLOG = """# BACKLOG
   - `docs/refs/SOURCES.md`
 - **Interface:** nenhuma
 
+#### S1.6 · Historia com caminho acentuado
+- **Tier:** T2
+- **Saída:** documento
+- **Escopo:**
+  - `docs/relatório.md`
+- **Interface:** nenhuma
+
 #### S1.80 · Proxima historia
 - **Tier:** T2
 - **Saída:** outro arquivo
@@ -263,3 +270,30 @@ def test_match_exato_retorna_1(tmp_path: Path) -> None:
 
     assert result.returncode == 1
     assert result.stdout.strip() == "docs/refs/SOURCES2.md"
+
+
+def test_renomear_fora_para_dentro_retorna_1(tmp_path: Path) -> None:
+    repo = base_repo(tmp_path)
+    # o arquivo fora do escopo existe em main (merge-base); o rename so o move
+    commit_file(repo, "docs/fora.md", "conteudo\n", "adiciona arquivo fora")
+    _git(repo, "checkout", "-b", "feature")
+    (repo / "scripts").mkdir(parents=True, exist_ok=True)
+    _git(repo, "mv", "docs/fora.md", "scripts/check_scope.py")
+    _git(repo, "commit", "-m", "renomeia para dentro do escopo")
+
+    result = run_script(repo, "S1.1")
+
+    assert result.returncode == 1
+    assert "docs/fora.md" in result.stdout
+    assert "scripts/check_scope.py" not in result.stdout
+
+
+def test_caminho_acentuado_no_escopo_retorna_0(tmp_path: Path) -> None:
+    repo = base_repo(tmp_path)
+    _git(repo, "checkout", "-b", "feature")
+    commit_file(repo, "docs/relatório.md", "relatorio\n", "adiciona arquivo com acento")
+
+    result = run_script(repo, "S1.6")
+
+    assert result.returncode == 0
+    assert result.stdout.strip() == ""
