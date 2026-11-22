@@ -14,8 +14,9 @@ Abrir PR da branch `story/S1.8` para `main` com a saída do aceite colada na des
 
 ## O que está feito e verificado
 - `scripts/check_scope.py` criado: lê `Escopo` de `docs/BACKLOG.md`, diff `main...HEAD`, lista fixa de arquivos de processo, códigos 0/1/2.
-- `tests/test_check_scope.py` criado: 14 testes unitários/mockados, todos passando.
+- `tests/test_check_scope.py` criado: 15 testes unitários/mockados, todos passando.
 - Aceite executado: unittest OK; códigos manuais 0 (S1.8), 2 (S1.3), 1 (README.md temporário fora do escopo).
+- Melhorias pós-revisão aplicadas: validação de formato do `--story`, tratamento de `OSError`/`FileNotFoundError` no `git diff`, `UnicodeDecodeError` na leitura do backlog, testes de integração para história inexistente e listagem no código 1.
 
 ## O que NÃO foi feito
 - Merge do PR; lint formal (ruff ainda não configurado — depende de S2.1).
@@ -27,9 +28,10 @@ Abrir PR da branch `story/S1.8` para `main` com a saída do aceite colada na des
 - `docs/HANDOFF.md` (este arquivo)
 
 ## Comandos rodados e resultado
-- `py -V:Astral\CPython3.12.8 -m unittest discover -s tests -v` → 14/14 OK
+- `py -V:Astral\CPython3.12.8 -m unittest discover -s tests -v` → 15/15 OK
 - `py -V:Astral\CPython3.12.8 scripts/check_scope.py --story S1.8` → código 0
 - `py -V:Astral\CPython3.12.8 scripts/check_scope.py --story S1.3` → código 2
+- `py -V:Astral\CPython3.12.8 scripts/check_scope.py --story INVALIDO` → código 2
 - Commit temporário em `README.md` + script → código 1; restaurado com `git reset --mixed HEAD~1` e `git restore README.md`
 
 ## Perguntas abertas
