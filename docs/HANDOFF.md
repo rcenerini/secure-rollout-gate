@@ -105,6 +105,8 @@ sintese: 0=1  1=18  2=41
 
 Leitura do aceite: as 18 historias com codigo 1 sao exatamente as 17 preenchidas nesta historia mais a S1.8 (que ja tinha `Escopo`). **Nenhuma delas devolve 2.** As 41 com codigo 2 dividem-se em 29 com `Saída` ambigua (Q-014) e 12 sem campo `Saída` (Q-015).
 
+O laco foi rodado de novo depois do ultimo commit, com a mesma sintese (`0=1  1=18  2=41`), e `check_scope.py --story S1.11` continuou com codigo 0. Diff final da branch contra `main`: `docs/BACKLOG.md`, `docs/HANDOFF.md`, `docs/QUESTIONS.md`, `docs/USAGE-LOG.md` — nada fora do `Escopo` mais a lista fixa.
+
 ### Aceite 1 - historia desta sessao
 ```
 PS <repo>> & "<python>" scripts/check_scope.py --story S1.11
