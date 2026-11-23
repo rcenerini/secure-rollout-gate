@@ -116,6 +116,8 @@ E3 pode começar o contrato e a política em paralelo ao E5, mas os parsers do E
 
 Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) · **Ler** · **Saída** · **Aceite** · **Parar se**.
 
+> **Escopo** é opcional por enquanto: está preenchido apenas nas histórias cuja `Saída` nomeia arquivos exatos; as demais seguem sem o campo (ver Q-014 em `docs/QUESTIONS.md`).
+
 ### E0 · Fundação do repositório (GitHub)
 
 #### S0.1 · Criar o repositório no GitHub (primeira tarefa)
