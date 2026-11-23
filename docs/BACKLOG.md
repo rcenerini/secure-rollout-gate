@@ -122,6 +122,8 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 - **Tier:** T0 (humano) · **Bloq:** D-01, D-02
 - **Ler:** `README.md`, decisões D-01 e D-02
 - **Saída:** repositório vazio criado; URL registrada em `docs/DECISOES.md`
+- **Escopo:**
+  - `docs/DECISOES.md`
 - **Aceite:** o repositório existe com o nome e a visibilidade decididos; branch padrão `main`; sem arquivos gerados automaticamente
 - **Parar se:** D-01 ou D-02 sem resposta. **Não criar como público sem a resposta de D-02.**
 
@@ -149,6 +151,11 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 #### S0.5 · Arquivos básicos do repositório
 - **Tier:** T3 · **Dep:** S0.2 · **Bloq:** D-10
 - **Saída:** `.gitignore` (sem segredos, sem `.env`), `.editorconfig`, `LICENSE` (conforme D-10), `SECURITY.md`
+- **Escopo:**
+  - `.gitignore`
+  - `.editorconfig`
+  - `LICENSE`
+  - `SECURITY.md`
 - **Aceite:** os arquivos existem; `.gitignore` cobre `.env*`, chaves e artefatos locais
 - **Parar se:** D-10 sem resposta
 
@@ -156,12 +163,16 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 - **Tier:** T0 · **Dep:** S0.2
 - **Ler:** configurações do repositório (Code security)
 - **Saída:** secret scanning, push protection, Dependabot alerts e code scanning ativos, no que o plano e a visibilidade permitirem; lista do que **não** ficou disponível em `docs/DECISOES.md`
+- **Escopo:**
+  - `docs/DECISOES.md`
 - **Aceite:** captura ou texto confirmando cada recurso ativo ou indisponível
 - **Parar se:** algum recurso estiver indisponível. Registrar e perguntar.
 
 #### S0.7 · Templates de PR e issue
 - **Tier:** T3 · **Dep:** S0.2 · **Bloq:** D-09
 - **Saída:** `.github/pull_request_template.md` com seções: História, Aceite executado (saída colada), Arquivos alterados, Evidências, Perguntas abertas
+- **Escopo:**
+  - `.github/pull_request_template.md`
 - **Aceite:** o template aparece ao abrir um PR
 - **Parar se:** D-09 indicar Issues como fonte de verdade (muda o formato)
 
@@ -170,6 +181,8 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 #### S1.1 · Inventário do opencode e dos modelos
 - **Tier:** T0 (humano) · **Bloq:** D-04
 - **Saída:** seção "Inventário" em `docs/LLM-ROUTING.md`: versão do opencode, provedores, modelos disponíveis, saldo e renovação de créditos, limites do Claude Code
+- **Escopo:**
+  - `docs/LLM-ROUTING.md`
 - **Aceite:** o humano confirma o inventário
 - **Parar se:** faltar qualquer dado. Não estimar.
 
@@ -184,6 +197,8 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 - **Tier:** T2 · **Dep:** S1.1 · **Bloq:** D-04
 - **Ler:** documentação V2 (versão confirmada v2.1.4): índice em https://opencode.ai/docs/llms.txt; localizar a página de configuração e conferir o esquema antes de escrever
 - **Saída:** `opencode.json` mínimo com `$schema` (a V2 aceita `instructions`, mas ainda não as carrega; a lista de leitura fica no `AGENTS.md`)
+- **Escopo:**
+  - `opencode.json`
 - **Aceite:** o opencode inicia no repositório sem erro de configuração e, ao ser perguntado, cita as regras do `AGENTS.md`
 - **Parar se:** o formato da versão não estiver documentado. Não copiar exemplo de outra versão.
 
@@ -191,6 +206,13 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 - **Tier:** T2 · **Dep:** S1.2, S1.3
 - **Ler:** https://opencode.ai/docs/agents/ (versão confirmada)
 - **Saída:** `.opencode/agents/{planner,test-author,implementer,reviewer,security-reviewer,doc-keeper}.md` no formato V2 (frontmatter com description, mode, model `provider/model`, permissions como lista de regras; corpo = prompt)
+- **Escopo:**
+  - `.opencode/agents/planner.md`
+  - `.opencode/agents/test-author.md`
+  - `.opencode/agents/implementer.md`
+  - `.opencode/agents/reviewer.md`
+  - `.opencode/agents/security-reviewer.md`
+  - `.opencode/agents/doc-keeper.md`
 - **Aceite:** o opencode lista os seis agentes; os de leitura têm `edit` negado; cada um aponta o modelo do tier aprovado na S1.2
 - **Parar se:** o identificador `provider/model` do plano Go não tiver sido confirmado pelo usuário
 - **Parar se:** o frontmatter divergir da doc da versão
@@ -212,6 +234,8 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 #### S1.7 · Registro de uso por história
 - **Tier:** T3 · **Dep:** S0.2
 - **Saída:** `docs/USAGE-LOG.md` com colunas: história, data, ferramenta, tier, modelo, tentativas, resultado, observação
+- **Escopo:**
+  - `docs/USAGE-LOG.md`
 - **Aceite:** o arquivo existe e a primeira linha é de S0.2
 
 #### S1.8 · Verificação de escopo do diff
@@ -227,12 +251,16 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 #### S1.9 · Registro de fontes oficiais
 - **Tier:** T3 · **Dep:** S0.2
 - **Saída:** `docs/refs/SOURCES.md` completado (o pacote inicial já traz as fontes verificadas em 21/11/2026): URL, data de consulta e o que foi usado
+- **Escopo:**
+  - `docs/refs/SOURCES.md`
 - **Aceite:** cada afirmação técnica de `AGENTS.md` e deste backlog tem fonte ou está marcada "não verificado"
 
 #### S1.10 · Admissão de skills de terceiros
 - **Tier:** T2 · **Dep:** S1.9
 - **Ler:** README do SkillSpector e do Snyk agent-scan (https://github.com/NVIDIA/skillspector, https://github.com/snyk/agent-scan)
 - **Saída:** procedimento em `docs/refs/ADMISSAO-SKILLS.md`: nenhuma skill ou MCP entra no projeto sem scan, commit fixado e revisão humana
+- **Escopo:**
+  - `docs/refs/ADMISSAO-SKILLS.md`
 - **Aceite:** uma skill de teste passa pelo procedimento e o resultado é registrado
 - **Parar se:** o comando da ferramenta não estiver na doc oficial
 
@@ -256,6 +284,8 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 #### S2.2 · CI de lint e testes
 - **Tier:** T2 · **Dep:** S2.1
 - **Saída:** `.github/workflows/ci.yml` com `permissions` mínimas (`contents: read`)
+- **Escopo:**
+  - `.github/workflows/ci.yml`
 - **Aceite:** o workflow roda em PR e passa; `permissions` declaradas no topo
 - **Parar se:** precisar de permissão além de leitura
 
@@ -314,12 +344,16 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 #### S3.2 · Régua de severidade comum
 - **Tier:** T1 (proposta) + humano · **Dep:** S3.1 · **Bloq:** D-08
 - **Saída:** `docs/SEVERIDADE.md` com o mapeamento de cada fonte (SARIF `level`, CVSS, severidade da ferramenta) para crítica, alta, média e baixa
+- **Escopo:**
+  - `docs/SEVERIDADE.md`
 - **Aceite:** o humano aprova; cada mapeamento cita a fonte da escala da ferramenta
 - **Parar se:** uma ferramenta não documentar a própria escala
 
 #### S3.3 · Contrato da API de decisão (OpenAPI)
 - **Tier:** T1 · **Dep:** S3.1
 - **Saída:** `api/openapi.yaml` com `GET /decisao` (parâmetros: `card` ou `sha` e `ambiente`) e resposta com `estado` (GO, NO-GO, PENDENTE), `motivos`, `ttl`, `sha`, `politica_versao`
+- **Escopo:**
+  - `api/openapi.yaml`
 - **Aceite:** o arquivo passa em um validador de OpenAPI; exemplos de resposta para os três estados
 - **Parar se:** precisar de campo que não esteja em `docs/ARQUITETURA.md`. Propor e perguntar.
 
@@ -332,6 +366,9 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 - **Tier:** T2 · **Dep:** S3.4 · **Bloq:** D-13
 - **Ler:** regra de decisão em `docs/ARQUITETURA.md`; documentação do OPA da versão fixada
 - **Saída:** `policy/decisao.rego`, `policy/decisao_test.rego`
+- **Escopo:**
+  - `policy/decisao.rego`
+  - `policy/decisao_test.rego`
 - **Aceite:** `opa check policy` e `opa test policy -v` passam; casos: sem avaliação → PENDENTE; fonte sem resposta → PENDENTE; `sha_coberto` diferente do SHA da release → PENDENTE
 - **Parar se:** a sintaxe Rego não for validada por `opa check`. **Não escrever Rego de memória sem rodar `opa check`.**
 
@@ -356,6 +393,8 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 #### S3.10 · Revisão independente da política
 - **Tier:** T1 (modelo diferente do que implementou) · **Dep:** S3.9
 - **Saída:** relatório de revisão em `docs/revisoes/S3.10.md`
+- **Escopo:**
+  - `docs/revisoes/S3.10.md`
 - **Aceite:** o humano lê e decide sobre cada achado do revisor
 
 ### E5 · Laboratório de teste e scanners no GitHub
@@ -435,6 +474,8 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 #### S7.1 · Alvos e métricas
 - **Tier:** T1 (proposta) + humano · **Dep:** S5.1 · **Bloq:** D-08
 - **Saída:** `docs/AVALIACAO.md`: alvos, métricas (verdadeiros, falsos positivos, exclusivos por ferramenta, tempo, esforço de triagem, estabilidade) e limites de aceitação
+- **Escopo:**
+  - `docs/AVALIACAO.md`
 - **Aceite:** o humano aprova os limites. **O agente não define limite sozinho.**
 
 #### S7.2 · Harness de execução
@@ -454,6 +495,8 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 #### S7.5 · Relatório e decisão de entrada
 - **Tier:** T1 (relatório) + humano · **Dep:** S7.3, S7.4
 - **Saída:** `docs/RESULTADO-AVALIACAO.md`
+- **Escopo:**
+  - `docs/RESULTADO-AVALIACAO.md`
 - **Aceite:** para cada ferramenta, a recomendação (bloqueia, sombra ou descarta) e o humano decide
 
 ### E8 · VPS (candidatas; detalhar após D-06)
