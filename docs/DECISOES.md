@@ -61,6 +61,8 @@ Registro de decisões e fatos. Só o dono do produto decide. Agentes **não** ac
 | S1.8 (Python) | 22/11/2026: o aceite da S1.8 foi executado em Python 3.14.0 (escolha do usuário na pergunta do interpretador), embora a D-03 diga 3.12. O código usa só stdlib e sintaxe compatível com 3.10 ou superior. A execução em 3.12 passa a ser critério da S2.2 (CI) | Registro; D-03 continua valendo |
 | S1.8 (revisão) | 22/11/2026: dois revisores `qwen4-max` (reviewer e security-reviewer) não viram a fuga por renomeação do `check_scope` (arquivo fora do `Escopo` movido para dentro dele devolvia 0); foi achada por reprodução do PM e corrigida com `--no-renames`. Lição: revisão por IA não substitui teste executável, e revisor de outra família ajuda quando o risco é alto | Registro |
 | D-14 | Campo `confianca` opcional no esquema | Libera S3.1 |
+| Q-014 | Decisão do usuário em 22/11/2026: **A agora + B depois** — abrir S1.12 (`check_scope` aceita entrada terminada em `/` como prefixo de diretório e `*` como sufixo de extensão) | S1.11 fecha como PARCIAL (29 histórias sem `Escopo`); cria a história S1.12 (T2, mexe em `scripts/check_scope.py` e nos testes) |
+| Q-015 | Decisão do usuário em 22/11/2026: **A** — as 12 histórias sem `Saída` ficam fora do aceite da S1.11; exigir `Saída` + `Escopo` quando cada uma for executada | O aceite da S1.11 não as inclui; S2.8, S3.7, S3.8, S4.2 a S4.5, S6.2 a S6.5 e S7.4 ganham `Saída` na própria execução |
 
 ## Direções propostas (ainda não aprovadas formalmente)
 
