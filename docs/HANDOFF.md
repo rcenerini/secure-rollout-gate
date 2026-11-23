@@ -137,6 +137,7 @@ All checks passed!
 Q-014 e Q-015, nesta sessao. Demais em `docs/QUESTIONS.md`.
 
 ## Observacoes
+- Comandos git autorizados na fixture de teste (resolucao P-1, opcao A): `git init` (com `-b main` ou `--initial-branch=main`), `git config user.name`/`git config user.email` (locais, valores falsos de teste), `git add`, `git commit`, `git branch`/`git checkout -b`, `git mv`.
 - Os dois scripts de verificacao do aceite ficaram fora do repositorio (pasta temporaria da sessao), porque o `Escopo` da S1.11 so permite `docs/BACKLOG.md`. Nao ha artefato de teste para reproduzir o aceite 1 e 2 alem dos comandos colados acima.
 - A S1.11 nao alterou `scripts/check_scope.py` nem seus testes.
 - O aceite do tipo "codigo 1" nas outras historias e esperado nesta branch: o diff tem `docs/BACKLOG.md`, que nao esta no `Escopo` delas. O criterio da historia e "nao retorna codigo 2".
