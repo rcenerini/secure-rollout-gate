@@ -21,7 +21,7 @@ Atualize ao fim de cada sessao e sempre que trocar de ferramenta (opencode <-> C
   - **M-1:** a evidencia da S1.8 saiu do `HANDOFF` na reescrita. Ela esta no PR #20/#21 e em `git show main:docs/HANDOFF.md`. Ponteiro sugerido: uma linha em Observacoes na proxima edicao do `HANDOFF`.
   - **M-4:** `opencode.json` nao esta na `Saída` da S1.4, mas os commits `096fa2e` e `4923a48` mexeram nele. Uma reexecucao da S1.4 daria codigo 1. Ajuste e na `Saída` da historia (decisao do dono).
   - **M-5:** `LICENSE` esta listado na `Saída` da S0.5, dispensado pela D-10. Manter ou alinhar a `Saída` e decisao do dono.
-- **Efeito no aceite (a confirmar pelo dono):** o `Escopo` da S1.11 lista so `docs/BACKLOG.md`. O commit autorizado de `docs/DECISOES.md` (respostas de Q-014 e Q-015) esta fora desse `Escopo`, entao `check_scope --story S1.11` passou de 0 para 1 e a sintese da branch deixou de bater com o "resultado esperado" do Aceite 1. Duas saidas, ambas sua decisao: acrescentar `docs/DECISOES.md` ao `Escopo` da S1.11 (o campo `Escopo` e da propria historia, edicao permitida) ou desfazer o commit do `DECISOES.md` e levar a decisao para la em outro momento.
+- **Efeito no aceite (resolvido):** o `Escopo` da S1.11 passou a listar `docs/BACKLOG.md` e `docs/DECISOES.md`, por autorizacao direta do dono em 22/11/2026. O commit das respostas de Q-014 e Q-015 fica coberto, `check_scope --story S1.11` volta a devolver 0 e o estado correto da branch e o resultado esperado do Aceite 1: **0=1, 1=18, 2=41**. Consequencia registrada no Aceite 2: com 30 caminhos listados nos `Escopo` (22 literais na `Saída`, 6 pela expansao de chaves da S1.4), passam a ser **2** os fora da `Saída` — `tests/test_check_scope.py` (S1.8, preexistente) e `docs/DECISOES.md` (S1.11, autorizacao do dono desta sessao).
 
 ## O que esta feito e verificado
 - `docs/BACKLOG.md`: campo `Escopo` acrescentado em 17 historias cuja `Saída` da a lista completa de arquivos (na S1.4 a lista sai do `{planner,test-author,...}.md` da propria `Saída`): S0.1, S0.5, S0.6, S0.7, S1.1, S1.3, S1.4, S1.7, S1.9, S1.10, S2.2, S3.2, S3.3, S3.5, S3.10, S7.1, S7.5. Total de historias com `Escopo` no arquivo: 19 (as outras duas sao S1.8 e S1.11, que ja tinham).
@@ -47,7 +47,7 @@ Atualize ao fim de cada sessao e sempre que trocar de ferramenta (opencode <-> C
 O laco rodou `python scripts/check_scope.py --story <ID>` para as 60 historias com cabecalho `####` no arquivo, com o diff ja commitado na branch (2 commits: `docs/BACKLOG.md` e `docs/QUESTIONS.md`). `docs/QUESTIONS.md` esta na lista fixa do script, entao o unico arquivo fora do `Escopo` dessas historias e `docs/BACKLOG.md` — por isso o codigo 1. Codigo 2 = sem campo `Escopo`. Apos o commit do `HANDOFF` e do `USAGE-LOG` (tambem na lista fixa) os codigos nao mudam.
 
 ```
-PS <repo>> Select-String -Path docs/BACKLOG.md -Pattern '^#### (S\d+\.\d+)' | % { $id=$_.Matches[0].Groups[1].Value; & python scripts/check_scope.py --story $id | Out-Null; "$id $LASTEXITCODE" }
+PS <repo>> Select-String -Path docs/BACKLOG.md -Pattern '^#### (S\d+\.\d+)' | % { $id=$_.Matches[0].Groups[1].Value; & "$env:LOCALAPPDATA\Python\bin\python.exe" scripts/check_scope.py --story $id | Out-Null; "$id $LASTEXITCODE" }
 resultado esperado: 0=1, 1=18, 2=41
 historias no BACKLOG: 60
 ID      cod  saida
