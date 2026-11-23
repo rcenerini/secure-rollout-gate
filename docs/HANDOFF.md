@@ -36,7 +36,8 @@ Atualize ao fim de cada sessao e sempre que trocar de ferramenta (opencode <-> C
 O laco rodou `python scripts/check_scope.py --story <ID>` para as 60 historias com cabecalho `####` no arquivo, com o diff ja commitado na branch (2 commits: `docs/BACKLOG.md` e `docs/QUESTIONS.md`). `docs/QUESTIONS.md` esta na lista fixa do script, entao o unico arquivo fora do `Escopo` dessas historias e `docs/BACKLOG.md` — por isso o codigo 1. Codigo 2 = sem campo `Escopo`. Apos o commit do `HANDOFF` e do `USAGE-LOG` (tambem na lista fixa) os codigos nao mudam.
 
 ```
-PS <repo>> $env:PYTHONIOENCODING='utf-8'; & "<python>" "<temp>\opencode\run_acceptance.py"   # laco que roda: python scripts/check_scope.py --story <ID>
+PS <repo>> Select-String -Path docs/BACKLOG.md -Pattern '^#### (S\d+\.\d+)' | % { $id=$_.Matches[0].Groups[1].Value; & python scripts/check_scope.py --story $id | Out-Null; "$id $LASTEXITCODE" }
+resultado esperado: 0=1, 1=18, 2=41
 historias no BACKLOG: 60
 ID      cod  saida
 S0.1     1    docs/BACKLOG.md
