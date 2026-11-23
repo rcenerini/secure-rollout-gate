@@ -272,6 +272,7 @@ Formato: **Tier** · **Dep** (depende de) · **Bloq** (bloqueada por decisão) �
 - **Saída:** `docs/BACKLOG.md` com o campo `Escopo` em cada história que tem `Saída` com arquivos
 - **Escopo:**
   - `docs/BACKLOG.md`
+  - `docs/DECISOES.md`
 - **Aceite:** `python scripts/check_scope.py --story <ID>` não retorna código 2 para nenhuma história com arquivos de saída; `Escopo` de cada história só lista caminhos que aparecem na `Saída` dela
 - **Parar se:** a `Saída` de uma história for ambígua sobre quais arquivos criar
 
